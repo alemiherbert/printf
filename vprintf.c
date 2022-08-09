@@ -51,6 +51,59 @@ int _vprintf(const char *format, va_list args)
 }
 
 /**
+  * _print_spec - Prints a valid specifier
+  * @format: The specifier to prints
+  * @args: A list of variadic arguments
+  *
+  * Return: The length of the specifier
+  */
+int _print_spec(char format, va_list args)
+{
+	int i  = 0, length = 0;
+	fmt_spec _types[] = {
+		{"c", _print_char},
+		{"s", _print_string},
+
+		{NULL, NULL}
+	};
+
+	while (_types[i].specifier)
+	{
+		if (*_types[i].specifier == format)
+			length = _types[i].f(args);
+
+		i++;
+	}
+
+	return (length);
+}
+
+/**
+ * print_invalid_spec - prints the char if its not a specifier
+ * @prev_fmt: the specifier before
+ * @format: the specifer to print
+ * @count: the number of characters just before printing
+ * 
+ * Return: number of character after printing
+ */
+int _print_invalid_spec(char prev_format, char format, int count)
+{
+	count += _putc('%');
+
+	if (prev_format == ' ')
+	{
+		count += _putc(' ');
+		count += _putc(format);
+	}
+	else
+	{
+		count += _putc(format);
+	}
+
+	return (count);
+}
+
+/**
  * _check_spec - this function checks for the specifier in the string 
  * @_spec: the specifier to check for 
  * 
