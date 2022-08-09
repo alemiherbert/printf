@@ -2,6 +2,16 @@
 #define MAIN_H
 #include <stdarg.h>
 
+/**
+ * struc specifiers -Struct specifiers
+ * @specier: conversion specifier
+ * @f: function pointer
+ */
+typedef struct specifiers
+{
+    char *specifier;
+    int (*f)(va_list args);
+}fmt_spec;
 
 int _putc(char c);
 int _print_char(va_list args);
