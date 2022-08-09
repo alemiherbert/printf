@@ -30,6 +30,14 @@ int _vprintf(const char *format, va_list args)
 				count += _putc(format[i]);
 
 			/* character checks */
+            if (_check_char(format[i]) == 0)
+			{
+				count = _print_invalid_spec(format[i - 1], format[i], count);
+			}
+			else
+			{
+				count += _print_spec(format[i], args);
+			}
 		}
 		else
 		{
@@ -41,3 +49,24 @@ int _vprintf(const char *format, va_list args)
 
 	return (count);
 }
+
+/**
+ * _check_spec - this function checks for the specifier in the string 
+ * @_spec: the specifier to check for 
+ * 
+ * Return 1 if present, else 0
+ */
+int _check_char(char _type)
+{
+	char _types[] = {'c', 's', '%'};
+	int i = 0;
+
+	while (_types[i])
+	{
+		if (_types[i] == _type)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
