@@ -106,8 +106,8 @@ int _print_invalid_spec(char prev_format, char format, int count)
 }
 
 /**
- * _check_spec - this function checks for the specifier in the string 
- * @_spec: the specifier to check for 
+ * _check_type - this function checks for the specifier in the string 
+ * @_type: the specifier to check for 
  * 
  * Return 1 if present, else 0
  */
