@@ -3,7 +3,7 @@
 
 
 /**
- * _vprinf - prints formatted output, using the variable argument list
+ * _vprintf - prints formatted output, using the variable argument list
  * @format: the string to be formatted
  * @args: the list of variadic arguments
  *
@@ -30,7 +30,7 @@ int _vprintf(const char *format, va_list args)
 				count += _putc(format[i]);
 
 			/* character checks */
-            if (_check_char(format[i]) == 0)
+			if (_check_char(format[i]) == 0)
 			{
 				count = _print_invalid_spec(format[i - 1], format[i], count);
 			}
@@ -81,11 +81,10 @@ int _print_spec(char format, va_list args)
 }
 
 /**
- * print_invalid_spec - prints the char if its not a specifier
- * @prev_fmt: the specifier before
+ * _print_invalid_spec - prints the char if its not a specifier
+ * @prev_format: the specifier before
  * @format: the specifer to print
  * @count: the number of characters just before printing
- * 
  * Return: number of character after printing
  */
 int _print_invalid_spec(char prev_format, char format, int count)
@@ -106,10 +105,9 @@ int _print_invalid_spec(char prev_format, char format, int count)
 }
 
 /**
- * _check_type - this function checks for the specifier in the string 
- * @_type: the specifier to check for 
- * 
- * Return 1 if present, else 0
+ * _check_char - this function checks for the specifier in the string
+ * @_type: the specifier to check for
+ * Return: 1 if present, else 0
  */
 int _check_char(char _type)
 {
