@@ -34,12 +34,12 @@ int _print_string(va_list args)
 }
 
 /**
-  * _print_a_integer - prints a integer
+  * _print_integer - prints a integer
   * @args: list of variadic arguments
   *
   * Return: length of the string
   */
-int _print_a_integer(va_list args)
+int _print_integer(va_list args)
 {
 	int count = 1, val = 0;
 	unsigned int aux = 0;
